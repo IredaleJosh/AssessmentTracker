@@ -1,0 +1,76 @@
+body {
+    background-color: aliceblue;
+}
+
+h1 {
+    margin: 0px 20px 0px 10px;
+}
+
+.navbar{
+    font-size: large;
+}
+
+/*=======DISPLAY ASSESSMENTS=======*/
+.display-assess{
+    border-width: 2px;
+    border-style: solid;
+    border-color: black;
+    margin: 20px 60% 20px 40px;
+    padding: 10px;
+}
+
+.desc{
+    font-family: Arial, Helvetica, sans-serif;
+    color: gray;
+    font-weight: bold;
+}
+
+
+/*=======BUTTONS=======*/
+.btn{
+    border: 1px solid black;
+    background-color: white;
+    color: black;
+    margin: 5px;
+    font-size: 16px;
+}
+
+.delete{
+    color: red;
+}
+
+.complete{
+    color: green;
+}
+
+.incomplete{
+    color: orange;
+}
+
+.edit{
+    color: gray;
+}
+
+.create{
+    font-weight: bold;
+}
+
+/*=======FLASH ERRORS=======*/
+.error{
+    font-weight: bold;
+    list-style-type: none;
+    margin: 20px;
+    font-size: large;
+}
+
+/*=======FORM FOR ASSESSMENTS=======*/
+.assess-form{
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+}
+
+p label {
+    display: flex;
+    font-weight: bold;
+}

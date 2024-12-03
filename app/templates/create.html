@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block content %}
+
+<!--ERROR MESSAGES-->
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+ <ul>
+  {% for message in messages %}
+    <li class="error">{{ message }} </li>
+  {% endfor %}
+ </ul>
+{% endif %}
+{% endwith %}
+
+<h1> {{ heading.head }} </h1>
+<!--USER ENTERS ASSESSMENT INTO DATABASE-->
+<form action="/create" method="post" name="create_assessment" class="assess-form">
+    {{ form.crsf_token }}
+    {{ form.hidden_tag() }}
+
+    <p>
+      {{ form.module_code.label }}
+      {{ form.module_code(size=8) }}
+    </p>
+
+    <p>
+      {{ form.assess_title.label }}
+      {{ form.assess_title(size=20) }}
+    </p>
+
+    <p>
+      {{ form.description.label }}
+      {{ form.description(cols="50", rows="3")}}
+    </p>
+
+    <p>
+      {{ form.due_date.label }}
+      {{ form.due_date (class="DatePicker") }}
+    </p>
+    <p><input class="btn edit" type="submit" value="Create"></p>
+</form>
+{% endblock %}

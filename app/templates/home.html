@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block content %}
+
+<!--DISPLAYS WHAT NAVBAR WE ARE AT-->
+<head lang="en">
+  {% if title %}
+  <title>{{ title }}</title>
+  {% else %}
+  <title>No title</title>
+  {% endif %}
+</head>
+
+<!--LISTS ASSESSMENTS-->
+<h1> {{ heading.head }} </h1>
+{% for p in assessments %}
+<div class="display-assess">
+  <h2> {{p.module_code}} </h2> 
+  <h4> {{p.assess_title}} </h4>
+  <p class="desc"> {{p.description}} </p>
+  <h4>Due by {{p.due_date}}</h4>
+
+  <!--DELETE BUTTON-->
+  <form action="/delete" method="post">
+    <button class="btn delete" type="submit" name="del_button" value="{{ p.id }}">Delete</button>
+  </form>
+
+  <!--EDIT BUTTON-->
+  <form action="/edit" method="post">
+    <button class="btn edit" type="submit" name="edit_button" value="{{ p.id }}">Edit</button>
+  </form>
+
+  <!--CHANGE NAME OF BUTTON BASED ON PROGRESS-->
+  <form action="/update_assess" method="post">
+    {% if p.progress == 0 %}
+    <button class="btn complete" type="submit" name="upd_button" value="{{ p.id }}">Complete</button>
+    {% else %}
+    <button class="btn incomplete" type="submit" name="upd_button" value="{{ p.id }}">Un-Finish</button>
+    {% endif %}
+  </form>
+  </div>
+  <br>
+{% endfor %}
+
+<!--NO ASSESSMENTS IN DATABASE-->
+{% if number == 0 %}
+<h3>No Current Assessments</h3>
+{% endif %}
+
+{% endblock %}
